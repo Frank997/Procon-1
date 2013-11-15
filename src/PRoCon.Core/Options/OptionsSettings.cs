@@ -488,7 +488,7 @@ namespace PRoCon.Core.Options {
 
                     try {
 
-                        psetPluginPermissions.AddPermission(new SecurityPermission(SecurityPermissionFlag.Execution));
+                        psetPluginPermissions.AddPermission(new SecurityPermission(SecurityPermissionFlag.Execution | SecurityPermissionFlag.ControlAppDomain | SecurityPermissionFlag.ControlEvidence | SecurityPermissionFlag.ControlPolicy));
                         psetPluginPermissions.AddPermission(new FileIOPermission(FileIOPermissionAccess.PathDiscovery, AppDomain.CurrentDomain.BaseDirectory));
                         psetPluginPermissions.AddPermission(new FileIOPermission(FileIOPermissionAccess.AllAccess, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins")));
                         psetPluginPermissions.AddPermission(new FileIOPermission(FileIOPermissionAccess.AllAccess, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs")));
