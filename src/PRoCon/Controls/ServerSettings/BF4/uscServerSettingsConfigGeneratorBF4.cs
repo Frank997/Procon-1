@@ -77,7 +77,7 @@ namespace PRoCon.Controls.ServerSettings.BF4 {
             this.Client.Game.RoundStartPlayerCount += new FrostbiteClient.LimitHandler(Game_RoundStartPlayerCount);
             this.Client.Game.PlayerRespawnTime += new FrostbiteClient.LimitHandler(Game_PlayerRespawnTime);
             this.Client.Game.GameModeCounter += new FrostbiteClient.LimitHandler(Game_GameModeCounter);
-            // not used in BF4 //this.Client.Game.CtfRoundTimeModifier +=new FrostbiteClient.LimitHandler(Game_CtfRoundTimeModifier);
+            this.Client.Game.RoundTimeLimit +=new FrostbiteClient.LimitHandler(Game_RoundTimeLimit);
             this.Client.Game.IdleTimeout += new FrostbiteClient.LimitHandler(Client_IdleTimeout);
             this.Client.Game.IdleBanRounds += new FrostbiteClient.LimitHandler(Game_IdleBanRounds);
             this.Client.Game.ServerMessage += new FrostbiteClient.ServerMessageHandler(Game_ServerMessage);
@@ -134,8 +134,8 @@ namespace PRoCon.Controls.ServerSettings.BF4 {
             this.AppendSetting("vars.unlockMode", mode.ToLower());
         }
 
-        void Game_BF4preset(FrostbiteClient sender, string mode) {
-            this.AppendSetting("vars.preset", mode);
+        void Game_BF4preset(FrostbiteClient sender, string mode, bool isLocked) {
+            this.AppendSetting("vars.preset", mode, isLocked.ToString());
         }
 
         /* not used in BF-4
@@ -206,11 +206,10 @@ namespace PRoCon.Controls.ServerSettings.BF4 {
             this.AppendSetting("vars.gameModeCounter", limit.ToString());
         }
 
-        /* not used in BF4 until now
-        void Game_CtfRoundTimeModifier(FrostbiteClient sender, int limit)
+        void Game_RoundTimeLimit(FrostbiteClient sender, int limit)
         {
-            this.AppendSetting("vars.ctfRoundTimeModifier", limit.ToString());
-        } */
+            this.AppendSetting("vars.RoundTimeLimit", limit.ToString());
+        }
 
         protected override void Client_PlayerLimit(FrostbiteClient sender, int limit) {
             this.AppendSetting("vars.maxPlayers", limit.ToString());

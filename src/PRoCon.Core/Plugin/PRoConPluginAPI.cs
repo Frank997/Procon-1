@@ -239,6 +239,7 @@ namespace PRoCon.Core.Plugin {
         public virtual void OnRoundStartPlayerCount(int limit) { }
         public virtual void OnGameModeCounter(int limit) { }
         public virtual void OnCtfRoundTimeModifier(int limit) { }
+        public virtual void OnRoundTimeLimit(int limit) { }
         public virtual void OnRoundLockdownCountdown(int limit) { }
         public virtual void OnRoundWarmupTimeout(int limit) { }
         public virtual void OnPremiumStatus(bool isEnabled) { }
@@ -281,7 +282,7 @@ namespace PRoCon.Core.Plugin {
         public virtual void OnHardcore(bool isEnabled) { }
 
         public virtual void OnUnlockMode(string mode) { } //BF3
-        public virtual void OnPreset(string mode) { } // BF4
+        public virtual void OnPreset(string mode, bool isLocked) { } // BF4
 
         #region BFBC2
 
